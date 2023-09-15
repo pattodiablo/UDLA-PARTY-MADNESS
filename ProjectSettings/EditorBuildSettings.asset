@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/02HeladoCarie/HeladoCarie.unity
     guid: 7145784a7a4fa5a438c553fa1dace660
+  - enabled: 1
+    path: Assets/Scenes/FinalScene.unity
+    guid: 30dbd1056e2e2464abeb353ca749a166
   m_configObjects: {}
