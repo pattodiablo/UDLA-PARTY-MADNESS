@@ -30,7 +30,6 @@ public class FollowFinger : MonoBehaviour
 
                     if (Physics.Raycast(ray, out hit) && hit.collider.gameObject == cuerpoTaladro)
                     {
-                        
                         isDragging = true;
                     }
                     break;

@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FinalScene.unity
     guid: 30dbd1056e2e2464abeb353ca749a166
+  - enabled: 1
+    path: Assets/Scenes/03BugsGame/BugsGame.unity
+    guid: dd0e18b686cf5f44bad0803784c5f86b
   m_configObjects: {}
