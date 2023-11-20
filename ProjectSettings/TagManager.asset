@@ -8,6 +8,7 @@ TagManager:
   - Taladro
   - Bug
   - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
