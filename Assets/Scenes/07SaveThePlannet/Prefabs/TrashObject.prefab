@@ -58,6 +58,8 @@ MonoBehaviour:
   objetoRotacion: {fileID: 7793948084692047473}
   destroyEffectPrefab: {fileID: 6192724089161036641, guid: e17d9a3f04750764c8c0a7a0461e4c3b,
     type: 3}
+  plusTenPrefab: {fileID: 9079131421006914270, guid: f5feff3798d67a9498cd8c751d5a6901,
+    type: 3}
 --- !u!114 &-2332644875933181433
 MonoBehaviour:
   m_ObjectHideFlags: 0
