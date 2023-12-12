@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,9 +15,11 @@ public class PlayerController : MonoBehaviour
 
     public GameObject cannonBulletPrefab;
       public Transform firePoint; // Punto desde el cual se instanciará la bala
- public float bulletSpeed = 10f; // Velocidad de la bala
+  public float bulletSpeed = 10f; // Velocidad de la bala
   public float fireInterval = 1f; // Intervalo de tiempo entre disparos
    public float bulletLifetime = 3f; // Tiempo de vida de la bala
+
+private bool canShoot;
 
     Rigidbody playerRigidbody;
     void Start(){
@@ -38,7 +41,22 @@ public class PlayerController : MonoBehaviour
     float joystickDistance = move1.magnitude;
     float calculatedMoveSpeed = Mathf.Clamp(joystickDistance, 0f, 1f) * maxMoveSpeed;
 
-    if (joystickDistance > 0)
+  object CanShoot = Variables.ActiveScene.Get("CanShoot");
+     if (Variables.ActiveScene.IsDefined("CanShoot"))  {
+    
+         if (bool.TryParse(CanShoot.ToString(), out canShoot))
+            {
+                // La conversión fue exitosa, ahora puedes usar 'canShoot'
+            }
+            else
+            {
+                // El valor no es convertible a booleano
+                Debug.LogError("El valor de 'CanShoot' no es convertible a booleano.");
+            }
+      }
+
+ 
+    if (joystickDistance > 0 )
     {
         float rotationAngle = Mathf.Atan2(move1.x, move1.y) * Mathf.Rad2Deg;
         Quaternion targetRotation = Quaternion.Euler(0f, 0f, -rotationAngle);
@@ -72,7 +90,10 @@ public class PlayerController : MonoBehaviour
 
   void FireCannon()
    {
-        // Obtener la rotación actual del cañón
+
+    if(canShoot){
+
+      // Obtener la rotación actual del cañón
         Quaternion cannonRotation = cannon.transform.rotation;
 
         // Instanciar la bala en el punto de fuego (firePoint) con la rotación actual del cañón
@@ -87,6 +108,8 @@ public class PlayerController : MonoBehaviour
             bulletRigidbody.velocity = bulletDirection * bulletSpeed;
               Destroy(bullet, bulletLifetime);
         }
+    }
+        
     }
 
 
