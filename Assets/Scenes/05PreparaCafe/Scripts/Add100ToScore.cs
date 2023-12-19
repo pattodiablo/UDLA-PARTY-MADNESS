@@ -4,13 +4,13 @@ using UnityEngine;
 using Unity.VisualScripting;
 
 
-public class Add10ToScore : MonoBehaviour
+public class Add100ToScore : MonoBehaviour
 {
 
 private object LocalScore;
-     public void add10(string s)
+     public void add100(int s)
     {
-        Debug.Log("PrintEvent: " + s + " called at: " + Time.time);
+      
         if (Variables.Application.IsDefined("LocalScore"))
         {
 
@@ -20,7 +20,7 @@ private object LocalScore;
             if (int.TryParse(LocalScore.ToString(), out int scoreActual))
             {
                 // Suma 10 puntos al score actual
-                scoreActual += 10;
+                scoreActual += s;
 
                 // Guarda el nuevo valor de score donde sea necesario (por ejemplo, PlayerPrefs)
                 Variables.Application.Set("LocalScore", scoreActual);
