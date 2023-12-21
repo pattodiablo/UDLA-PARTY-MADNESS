@@ -535,4 +535,12 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.33333334
+    functionName: Add10toScore
+    data: 10
+    objectReferenceParameter: {fileID: 11500000, guid: ba9d041bb474f3a46bdf11647e6092e9,
+      type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

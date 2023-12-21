@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.VisualScripting;
+
 
 public class TrashSpawner : MonoBehaviour
 {
@@ -10,7 +12,7 @@ public class TrashSpawner : MonoBehaviour
 
     private float nextSpawnTime;
     private List<GameObject> trashObjects = new List<GameObject>();
-
+    private object canTrash;
     void Update()
     {
         // Verifica si es el momento de generar un nuevo TrashObject
@@ -38,13 +40,23 @@ public class TrashSpawner : MonoBehaviour
         float screenWidth = Camera.main.orthographicSize * 2 * Camera.main.aspect;
         Vector3 spawnPosition = new Vector3(transform.position.x - screenWidth / 2, spawnY, transform.position.z);
 
-        // Instancia el TrashObject en la posición calculada
-        GameObject newTrashObject = Instantiate(trashObjectPrefab, spawnPosition, Quaternion.identity);
+        canTrash = Variables.ActiveScene.Get("CanTrash");
 
-        // Agrega el objeto a la lista
-        trashObjects.Add(newTrashObject);
+         if (bool.TryParse(canTrash.ToString(), out bool canTrashConverted))
+            {
+                if(canTrashConverted){
 
-        // Opcionalmente, puedes establecer propiedades o comportamientos adicionales para el objeto generado aquí
+                    // Instancia el TrashObject en la posición calculada
+                    GameObject newTrashObject = Instantiate(trashObjectPrefab, spawnPosition, Quaternion.identity);
+
+                    // Agrega el objeto a la lista
+                    trashObjects.Add(newTrashObject);
+
+                     // Opcionalmente, puedes establecer propiedades o comportamientos adicionales para el objeto generado aquí
+                        }
+            }
+       
+     
     }
 
     void DestroyOldestTrashObject()
